@@ -1,0 +1,99 @@
+canvas {
+    border: 1px solid black;
+    touch-action: none; /* Prevent default scrolling behavior on touch devices */
+    /* width: 1000px; */
+}
+
+#chatBox {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    height: 510px;
+    width: 300px;
+    overflow-y: scroll;
+    background-color: #f9f9f9;
+    display: none; /* Initially hide the chat box */
+}
+
+#chatInput {
+    display: none; /* Initially hide the chat input */
+    width: 220px;
+}
+
+#sendChat {
+    display: none; /* Initially hide the send button */
+}
+
+#rounds {
+    display: none; /* Initially hide the chat input */
+    width: 220px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.button-container button {
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.button-container input[type="text"] {
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
+.button-container input[type="color"] {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    /* justify-content: space-between; */
+}
+
+.roomButton {
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.roomInput {
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.creationInput {
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    display: none;
+}

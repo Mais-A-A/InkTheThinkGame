@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Multiplayer Drawing Game</title>
+
+</head>
+<body>
+
+<h1>Multiplayer Drawing Game</h1>
+
+
+<!-- Room creation and joining interface -->
+<div id="roomControls">
+    <input type="text" class="roomInput" id="nicknameInput" placeholder="Enter your nickname">
+    <input class="roomInput" type="text" id="playersInput" placeholder="Enter number of players">
+    <input class="roomInput" type="text" id="roundsInput" placeholder="Enter number of rounds">
+    <button class="roomButton" id="createRoomBtn">Create Room</button>
+    <input class="roomInput" type="text" id="roomIdInput" placeholder="Enter Room ID to Join">
+    <button class="roomButton" id="joinRoomBtn">Join Room</button>
+    <p id="nickname"></p>
+    <p id="currentRoom">No room joined</p>
+</div>
+
+
+<div class="container">
+    <div class="drawing">
+        <!-- Drawing tools -->
+        <canvas id="drawingCanvas" width="800" height="600" style="display: none;"></canvas>
+
+        <!-- Buttons aligned in a row -->
+        <div class="button-container">
+            <input type="color" id="colorPicker" value="#000000" style="display: none;">
+            <button id="clearCanvas" style="display: none;">Clear Canvas</button>
+            <button id="eraserBtn" style="display: none;">Eraser</button>
+        </div>
+
+    </div>
+    <div class="chat">
+        <!-- Chat box -->
+        <div id="chatBox"></div>
+        <div class="button-container">
+            <input type="text" id="chatInput" placeholder="Type a message">
+            <button id="sendChat">Send</button>
+        </div>
+    </div>
+</div>
+<script src="brain.js"></script>
+</body>
+</html>
