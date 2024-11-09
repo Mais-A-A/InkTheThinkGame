@@ -33,5 +33,6 @@ random words suggested by the AI.
 ○ The final score will determine the winner at the end of the game.
 9. End Game:
 ○ After all rounds are completed, the game announces the winner.
-![image](https://github.com/user-attachments/assets/c5002950-6fe1-4945-9e2f-772f7ab411fc)
+![image](https://github.com/user-attachments/assets/90659169-6bf6-4a10-a386-9d763372a476)
+
 
