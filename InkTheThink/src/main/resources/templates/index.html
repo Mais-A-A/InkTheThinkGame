@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style1.css">
+    <style>
+        /* Hide the file input */
+        #file-input {
+            display: none;
+        }
+    </style>
+    <title>Ink The Think</title>
+</head>
+<body>
+
+<div id="roomControls">
+    <div class="profile-container">
+        <!-- Profile Picture Section -->
+        <div class="profile-picture" onclick="document.getElementById('file-input').click();">
+            <img id="profile-img" src="https://via.placeholder.com/100" alt="Profile Picture">
+        </div>
+
+        <!-- Hidden File Input -->
+        <input type="file" id="file-input" accept="image/*" onchange="updateProfileImage()">
+
+        <!-- Profile Name and Game Title -->
+        <div class="profile-name" id="nameProfile"></div>
+        <div class="game-title">Ink The Think</div>
+
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" id="totalScore"></div>
+                <div id ="x" class="stat-label">Points</div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="btn" onclick="showPlayOptions()">Play</button>
+        </div>
+
+
+        <div class="play-options" style="display:none">
+            <button class="roomButton" id="createRoomBtn" >Create Room</button>
+            <button class="roomButton" id="joinRoomBtn" >Join Room</button>
+        </div>
+        <div id="createControls">
+            <input class="roomInput" type="text" id="playersInput" placeholder="Enter number of players" style="display: none;">
+            <input class="roomInput" type="text" id="roundsInput" placeholder="Enter number of rounds" style="display: none;">
+            <button class="roomButton" id="startBtn" style="display: none;">Create Room</button>
+        </div>
+
+        <div id="joinControls">
+            <input class="roomInput" type="text" id="roomIdInput" placeholder="Enter Room ID to Join" style="display: none;">
+            <button class="roomButton" id="startBtn2" style="display: none;">Join Room</button>
+        </div>
+    </div>
+
+
+
+    <p id="nickname" style="display:none"></p>
+    <div id="final">
+        <label id = "lamamais" style="display:none">RoomID: </label>
+        <input type="text" id="roomIdTmp" placeholder="No room Joined" readonly style="display:none ;border: none; outline: none">
+
+
+    </div>
+
+
+
+    <div class="container">
+        <div class="drawing">
+            <canvas id="drawingCanvas" width="500" height="400" style="display: none;"></canvas>
+            <div class="button-container">
+                <input type="color" id="colorPicker" value="#000000" style="display: none;">
+                <button id="clearCanvas" style="display: none;">Clear Canvas</button>
+                <button id="eraserBtn" style="display: none;">Eraser</button>
+                <div id="timer" style="display: none;">Time Remaining: <span id="time">40</span> seconds</div>
+            </div>
+        </div>
+        <div class="chat">
+            <div id="chatBox"></div>
+            <div class="button-container">
+                <input type="text" id="chatInput" placeholder="Type a message">
+                <button id="sendChat">Send</button>
+            </div>
+        </div>
+        <div id="messageBox">
+<!--            <h3>Messages</h3>-->
+            <div id="messages"></div>
+        </div>
+        <div id="scoreboard">
+            <h3>Score Board</h3>
+            <div id="score"></div>
+        </div>
+    </div>
+</body>
+<script src="/js/brain.js" defer></script>
+</html>

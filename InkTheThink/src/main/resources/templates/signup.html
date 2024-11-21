@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup Form</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/signup.js" defer></script>
+</head>
+<body>
+<section>
+    <form id="signupForm" action="/req/signup" method="post">
+        <h1>Sign Up</h1>
+        <div class="inputbox">
+            <ion-icon name="person-outline"></ion-icon>
+            <input type="text" id="username" name="username" required autocomplete="username">
+            <label for="username">Name</label>
+        </div>
+        <div class="inputbox">
+            <ion-icon name="mail-outline"></ion-icon>
+            <input type="email" id="email" name="email" required autocomplete="email">
+            <label for="email">Email</label>
+        </div>
+        <div class="inputbox">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input type="password" id="password" name="password" required autocomplete="new-password">
+            <label for="password">Password</label>
+        </div>
+        <div class="inputbox">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input type="password" id="passwordcon" name="passwordcon" required autocomplete="new-password">
+            <label for="passwordcon">Confirm Password</label>
+        </div>
+        <button id="submit" type="submit">Sign Up</button>
+        <div class="register">
+            <p>Already have an account? <a href="/req/login">Log In</a></p>
+        </div>
+    </form>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const signupForm = document.getElementById('signupForm');
+
+        signupForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('passwordcon').value;
+
+            // Function to check password strength
+            const isPasswordValid = (password) => {
+                const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+                return strongPasswordRegex.test(password);
+            };
+
+            // Validate inputs
+            if (!username) {
+                alert("Username is required.");
+                return; // Exit function
+            }
+
+            if (!email) {
+                alert("Email is required.");
+                return; // Exit function
+            }
+
+            if (!signupForm.querySelector('#email').checkValidity()) {
+                alert("Please enter a valid email address.");
+                return; // Exit function
+            }
+
+            if (!isPasswordValid(password)) {
+                alert("Password must be at least 8 characters long, contain uppercase and lowercase letters, a number, and a special character.");
+                document.getElementById('password').value = ""; // Clear password field
+                document.getElementById('passwordcon').value = ""; // Clear confirm password field
+                return; // Exit function
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                document.getElementById('passwordcon').value = ""; // Clear confirm password field
+                return; // Exit function
+            }
+
+            // If all validations pass, send form data
+            const data = {
+                username,
+                email,
+                password
+            };
+            const jsonData = JSON.stringify(data);
+
+            fetch('/valid_cred', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(response => {
+                    console.log("hi mais"+response.ok);
+                    if (!response.ok) {
+                        alert("User name or Email has already used!")
+                        throw new Error('Network response was not ok');
+                    }
+
+                    return response.text(); // The response is plain text with the username
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+
+            fetch('/req/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: jsonData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Signup successful');
+                        window.location.href = '/req/login'; // Redirect to login page
+                    } else {
+                        alert('Signup failed ! Username Or Email already exists! ');
+                    }
+                })
+                .catch(error => {
+                    console.error("Error during signup:", error);
+                    alert('An error occurred during signup');
+                });
+        });
+    });
+</script>
+</body>
+</html>
