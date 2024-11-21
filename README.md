@@ -35,7 +35,8 @@ random words suggested by the AI.
 ○ After all rounds are completed, the game announces the winner.
 ![image](https://github.com/user-attachments/assets/90659169-6bf6-4a10-a386-9d763372a476)
 ![image](https://github.com/user-attachments/assets/6a3b6887-efa0-4ea0-b65a-da1611aa25e5)
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/6e5ee6c8-e1d1-4a3e-ae98-28234f2c4ae9)
+
 
 
 
